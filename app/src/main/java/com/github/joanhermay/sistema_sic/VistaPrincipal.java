@@ -4,7 +4,7 @@
  */
 package com.github.joanhermay.sistema_sic;
 
-import com.github.joanhermay.sistema_sic.catalogo.vistas.VistaRegistroEdicionCatalogoDeCuentas;
+import com.github.joanhermay.sistema_sic.catalogo.vistas.VistaCatalogoDeCuentas;
 import com.github.joanhermay.sistema_sic.librodiario.vistas.VistaRegistroEdicionAsientosDeDiario;
 import com.github.joanhermay.sistema_sic.librodiario.vistas.VistaRegistroEdicionMovimientos;
 import java.awt.event.ActionListener;

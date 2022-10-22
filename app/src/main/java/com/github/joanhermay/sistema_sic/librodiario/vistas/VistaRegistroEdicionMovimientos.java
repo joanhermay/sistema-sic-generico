@@ -4,8 +4,7 @@
  */
 package com.github.joanhermay.sistema_sic.librodiario.vistas;
 
-import com.github.joanhermay.sistema_sic.catalogo.vistas.VistaRegistroEdicionCatalogoDeCuentas;
-import com.github.joanhermay.sistema_sic.catalogo.vistas.VistaSeleccionCuentaCatalogoDeCuentas;
+import com.github.joanhermay.sistema_sic.catalogo.vistas.VistaCatalogoDeCuentas;
 
 /**
  *
