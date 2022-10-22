@@ -136,10 +136,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         txtMesPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtMesPeriodoContable.setText("Mes");
 
-        cbAnioPeriodoContable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2022", "2021", "2020" }));
         cbAnioPeriodoContable.setAlignmentX(0.0F);
-
-        cbMesPeriodoContable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Octubre", "Septiembre", "Agosto" }));
 
         txtEstadoPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         txtEstadoPeriodoContable.setText("ESTADO");
