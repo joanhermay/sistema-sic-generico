@@ -31,6 +31,12 @@ application {
     mainClass = 'com.github.joanhermay.sistema_sic.Principal'
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
