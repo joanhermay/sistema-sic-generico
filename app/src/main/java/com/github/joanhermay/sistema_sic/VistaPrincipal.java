@@ -54,30 +54,36 @@ public class VistaPrincipal extends javax.swing.JFrame {
         txtMesPeriodoContable = new javax.swing.JLabel();
         cbAnioPeriodoContable = new javax.swing.JComboBox<>();
         cbMesPeriodoContable = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtEstadoPeriodoContable = new javax.swing.JLabel();
+        txtSalidaEstadoPeriodoContable = new javax.swing.JTextField();
+        btnCerrarPeriodoContable = new javax.swing.JButton();
+        separadorAñoMesYEstadosFinancierosExtra = new javax.swing.JSeparator();
+        panelEstadosFinancierosExta = new javax.swing.JPanel();
+        btnVerBalanceGeneral = new javax.swing.JButton();
+        btnVerEstadoDeResultado = new javax.swing.JButton();
         panelTabGlobal = new javax.swing.JTabbedPane();
         panelTabLibroDiario = new javax.swing.JPanel();
         panelAsientos = new javax.swing.JPanel();
         panelTablaAsientos = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbAsientosDeDiario = new javax.swing.JTable();
-        btnRegistrarEditarNuevoAsientoDeDiario = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRegistrarNuenoAsiento = new javax.swing.JButton();
+        btnEliminarAsiento = new javax.swing.JButton();
+        btnEditarAsiento = new javax.swing.JButton();
         panelMovimientos = new javax.swing.JPanel();
         panelTablaMovimientos = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbMovimientosDeAsientosDeDiario = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        ftxtSalidaTotalDebeAsiento = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextField8 = new javax.swing.JFormattedTextField();
+        ftxtSalidaTotalHaberAsiento = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
-        jFormattedTextField9 = new javax.swing.JFormattedTextField();
-        btnEditarMovimiento = new javax.swing.JButton();
+        ftxtSaldoAsiento = new javax.swing.JFormattedTextField();
+        btnRegistrarMovimiento = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         panelTabLibroMayor = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMovimientosCuentaEspecificaLibroMayor = new javax.swing.JTable();
@@ -90,25 +96,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ftxtSaldoTotalCuentaLibroMayor = new javax.swing.JFormattedTextField();
         txtCuentaLibroMayor = new javax.swing.JLabel();
         cbCuentaAMostrarLibroMayor = new javax.swing.JComboBox<>();
-        panelTabBalanceGeneral = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        panelTabEstadoDeResultado = new javax.swing.JPanel();
         barraMenuOpciones = new javax.swing.JMenuBar();
         menuAcciones = new javax.swing.JMenu();
         menuItemCrearPeriodoContable = new javax.swing.JMenuItem();
@@ -121,7 +108,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         panelTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtTituloApp.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtTituloApp.setForeground(new java.awt.Color(0, 0, 0));
         txtTituloApp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtTituloApp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -155,15 +141,27 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         cbMesPeriodoContable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Octubre", "Septiembre", "Agosto" }));
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("ESTADO");
+        txtEstadoPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtEstadoPeriodoContable.setText("ESTADO");
 
-        jTextField2.setEditable(false);
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("EN CURSO / CERRADO");
-        jTextField2.setFocusable(false);
+        txtSalidaEstadoPeriodoContable.setEditable(false);
+        txtSalidaEstadoPeriodoContable.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSalidaEstadoPeriodoContable.setFocusable(false);
 
-        jButton1.setText("Cerrar Periodo");
+        btnCerrarPeriodoContable.setText("Cerrar Periodo");
+
+        separadorAñoMesYEstadosFinancierosExtra.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        panelEstadosFinancierosExta.setEnabled(false);
+        panelEstadosFinancierosExta.setLayout(new java.awt.GridLayout(1, 2, 50, 100));
+
+        btnVerBalanceGeneral.setText("Balance General");
+        btnVerBalanceGeneral.setEnabled(false);
+        panelEstadosFinancierosExta.add(btnVerBalanceGeneral);
+
+        btnVerEstadoDeResultado.setText("Estado de Resultado");
+        btnVerEstadoDeResultado.setEnabled(false);
+        panelEstadosFinancierosExta.add(btnVerEstadoDeResultado);
 
         javax.swing.GroupLayout panelPeriodoContableLayout = new javax.swing.GroupLayout(panelPeriodoContable);
         panelPeriodoContable.setLayout(panelPeriodoContableLayout);
@@ -181,30 +179,42 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbMesPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
-                .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelPeriodoContableLayout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEstadoPeriodoContable)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtSalidaEstadoPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCerrarPeriodoContable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separadorAñoMesYEstadosFinancierosExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelEstadosFinancierosExta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelPeriodoContableLayout.setVerticalGroup(
-            panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(panelPeriodoContableLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAnioPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbAnioPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMesPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbMesPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPeriodoContableLayout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAnioPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbAnioPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEstadoPeriodoContable)
+                            .addComponent(txtSalidaEstadoPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtMesPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbMesPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPeriodoContableLayout.createSequentialGroup()
+                                .addComponent(btnCerrarPeriodoContable)
+                                .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPeriodoContableLayout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(separadorAñoMesYEstadosFinancierosExtra)
+                            .addComponent(panelEstadosFinancierosExta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
 
@@ -236,13 +246,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
             tbAsientosDeDiario.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        btnRegistrarEditarNuevoAsientoDeDiario.setText("Registrar nuevo asiento");
+        btnRegistrarNuenoAsiento.setText("Registrar nuevo asiento");
 
-        jButton2.setText("Eliminar asiento");
-        jButton2.setEnabled(false);
+        btnEliminarAsiento.setText("Eliminar asiento");
+        btnEliminarAsiento.setEnabled(false);
 
-        jButton3.setText("Editar asiento");
-        jButton3.setEnabled(false);
+        btnEditarAsiento.setText("Editar asiento");
+        btnEditarAsiento.setEnabled(false);
 
         javax.swing.GroupLayout panelTablaAsientosLayout = new javax.swing.GroupLayout(panelTablaAsientos);
         panelTablaAsientos.setLayout(panelTablaAsientosLayout);
@@ -254,22 +264,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaAsientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btnEliminarAsiento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnEditarAsiento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRegistrarEditarNuevoAsientoDeDiario)))
+                        .addComponent(btnRegistrarNuenoAsiento)))
                 .addContainerGap())
         );
         panelTablaAsientosLayout.setVerticalGroup(
             panelTablaAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaAsientosLayout.createSequentialGroup()
                 .addGroup(panelTablaAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarEditarNuevoAsientoDeDiario)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(btnRegistrarNuenoAsiento)
+                    .addComponent(btnEditarAsiento)
+                    .addComponent(btnEliminarAsiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -305,20 +315,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Debe");
 
-        jFormattedTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFormattedTextField4.setEnabled(false);
+        ftxtSalidaTotalDebeAsiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ftxtSalidaTotalDebeAsiento.setEnabled(false);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Haber");
 
-        jFormattedTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFormattedTextField8.setEnabled(false);
+        ftxtSalidaTotalHaberAsiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ftxtSalidaTotalHaberAsiento.setEnabled(false);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Saldo");
 
-        jFormattedTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jFormattedTextField9.setEnabled(false);
+        ftxtSaldoAsiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ftxtSaldoAsiento.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -328,15 +338,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jFormattedTextField4)
+                .addComponent(ftxtSalidaTotalDebeAsiento)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(16, 16, 16)
-                .addComponent(jFormattedTextField8)
+                .addComponent(ftxtSalidaTotalHaberAsiento)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jFormattedTextField9)
+                .addComponent(ftxtSaldoAsiento)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -345,16 +355,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtSalidaTotalDebeAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(jFormattedTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtSalidaTotalHaberAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jFormattedTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftxtSaldoAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnEditarMovimiento.setText("Editar movimiento");
-        btnEditarMovimiento.setEnabled(false);
+        btnRegistrarMovimiento.setText("Registrar movimiento");
+        btnRegistrarMovimiento.setEnabled(false);
+
+        jButton1.setText("Editar movimiento");
+        jButton1.setEnabled(false);
+
+        jButton4.setText("Eliminar movimiento");
+        jButton4.setEnabled(false);
 
         javax.swing.GroupLayout panelTablaMovimientosLayout = new javax.swing.GroupLayout(panelTablaMovimientos);
         panelTablaMovimientos.setLayout(panelTablaMovimientosLayout);
@@ -367,15 +383,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaMovimientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEditarMovimiento)))
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRegistrarMovimiento)))
                 .addContainerGap())
         );
         panelTablaMovimientosLayout.setVerticalGroup(
             panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaMovimientosLayout.createSequentialGroup()
-                .addComponent(btnEditarMovimiento)
+                .addGroup(panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarMovimiento)
+                    .addComponent(jButton1)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -479,121 +502,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtCuentaLibroMayor)
                     .addComponent(cbCuentaAMostrarLibroMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         panelTabGlobal.addTab("Libro Mayor", panelTabLibroMayor);
-
-        panelTabBalanceGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Cuenta", "Debe", "Haber", "Acreedor", "Deudor"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable1);
-
-        jPanel5.setLayout(new java.awt.GridLayout(1, 2));
-
-        jPanel6.setLayout(new java.awt.GridLayout(3, 2, 10, 10));
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("TOTAL DEBE");
-        jPanel6.add(jLabel5);
-
-        jFormattedTextField5.setEditable(false);
-        jFormattedTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel6.add(jFormattedTextField5);
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("TOTAL HABER");
-        jPanel6.add(jLabel6);
-
-        jFormattedTextField6.setEditable(false);
-        jFormattedTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel6.add(jFormattedTextField6);
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("DIFERENCIA");
-        jPanel6.add(jLabel7);
-
-        jFormattedTextField7.setEditable(false);
-        jFormattedTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel6.add(jFormattedTextField7);
-
-        jPanel5.add(jPanel6);
-
-        jPanel7.setLayout(new java.awt.GridLayout(3, 3, 10, 10));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TOTAL ACREEDOR");
-        jPanel7.add(jLabel1);
-
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel7.add(jFormattedTextField1);
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("TOTAL DEUDOR");
-        jPanel7.add(jLabel2);
-
-        jFormattedTextField2.setEditable(false);
-        jFormattedTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel7.add(jFormattedTextField2);
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("DIFERENCIA");
-        jPanel7.add(jLabel3);
-
-        jFormattedTextField3.setEditable(false);
-        jFormattedTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel7.add(jFormattedTextField3);
-
-        jPanel5.add(jPanel7);
-
-        javax.swing.GroupLayout panelTabBalanceGeneralLayout = new javax.swing.GroupLayout(panelTabBalanceGeneral);
-        panelTabBalanceGeneral.setLayout(panelTabBalanceGeneralLayout);
-        panelTabBalanceGeneralLayout.setHorizontalGroup(
-            panelTabBalanceGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTabBalanceGeneralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelTabBalanceGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panelTabBalanceGeneralLayout.setVerticalGroup(
-            panelTabBalanceGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTabBalanceGeneralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        panelTabGlobal.addTab("Balance General", panelTabBalanceGeneral);
-
-        panelTabEstadoDeResultado.setEnabled(false);
-
-        javax.swing.GroupLayout panelTabEstadoDeResultadoLayout = new javax.swing.GroupLayout(panelTabEstadoDeResultado);
-        panelTabEstadoDeResultado.setLayout(panelTabEstadoDeResultadoLayout);
-        panelTabEstadoDeResultadoLayout.setHorizontalGroup(
-            panelTabEstadoDeResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1178, Short.MAX_VALUE)
-        );
-        panelTabEstadoDeResultadoLayout.setVerticalGroup(
-            panelTabEstadoDeResultadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
-        );
-
-        panelTabGlobal.addTab("Estado de resultado", panelTabEstadoDeResultado);
 
         javax.swing.GroupLayout panelGlobalLayout = new javax.swing.GroupLayout(panelGlobal);
         panelGlobal.setLayout(panelGlobalLayout);
@@ -603,9 +518,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelGlobalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTabGlobal)
-                    .addGroup(panelGlobalLayout.createSequentialGroup()
-                        .addComponent(panelPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(panelPeriodoContable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelGlobalLayout.setVerticalGroup(
@@ -613,7 +526,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGlobalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(panelTabGlobal)
                 .addContainerGap())
         );
@@ -655,56 +568,40 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenuBar barraMenuOpciones;
-    public javax.swing.JButton btnEditarMovimiento;
-    public javax.swing.JButton btnRegistrarEditarNuevoAsientoDeDiario;
+    public javax.swing.JButton btnCerrarPeriodoContable;
+    public javax.swing.JButton btnEditarAsiento;
+    public javax.swing.JButton btnEliminarAsiento;
+    public javax.swing.JButton btnRegistrarMovimiento;
+    public javax.swing.JButton btnRegistrarNuenoAsiento;
+    public javax.swing.JButton btnVerBalanceGeneral;
+    public javax.swing.JButton btnVerEstadoDeResultado;
     public javax.swing.JComboBox<String> cbAnioPeriodoContable;
     public javax.swing.JComboBox<String> cbCuentaAMostrarLibroMayor;
     public javax.swing.JComboBox<String> cbMesPeriodoContable;
+    public javax.swing.JFormattedTextField ftxtSaldoAsiento;
     public javax.swing.JFormattedTextField ftxtSaldoTotalCuentaLibroMayor;
+    public javax.swing.JFormattedTextField ftxtSalidaTotalDebeAsiento;
+    public javax.swing.JFormattedTextField ftxtSalidaTotalHaberAsiento;
     public javax.swing.JFormattedTextField ftxtTotalDebeLibroMayor;
     public javax.swing.JFormattedTextField ftxtTotalHaberLibroMayor;
     public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
-    public javax.swing.JFormattedTextField jFormattedTextField1;
-    public javax.swing.JFormattedTextField jFormattedTextField2;
-    public javax.swing.JFormattedTextField jFormattedTextField3;
-    public javax.swing.JFormattedTextField jFormattedTextField4;
-    public javax.swing.JFormattedTextField jFormattedTextField5;
-    public javax.swing.JFormattedTextField jFormattedTextField6;
-    public javax.swing.JFormattedTextField jFormattedTextField7;
-    public javax.swing.JFormattedTextField jFormattedTextField8;
-    public javax.swing.JFormattedTextField jFormattedTextField9;
-    public javax.swing.JLabel jLabel1;
+    public javax.swing.JButton jButton4;
     public javax.swing.JLabel jLabel10;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
     public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel5;
-    public javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel jLabel7;
-    public javax.swing.JLabel jLabel8;
     public javax.swing.JLabel jLabel9;
     public javax.swing.JPanel jPanel1;
-    public javax.swing.JPanel jPanel5;
-    public javax.swing.JPanel jPanel6;
-    public javax.swing.JPanel jPanel7;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane3;
-    public javax.swing.JScrollPane jScrollPane4;
-    public javax.swing.JTable jTable1;
-    public javax.swing.JTextField jTextField2;
     public javax.swing.JMenu menuAcciones;
     public javax.swing.JMenuItem menuItemCrearPeriodoContable;
     public javax.swing.JMenuItem munuItemCostoDeManoDeObra;
     public javax.swing.JMenuItem munuItemVerCatalogoDeCuenta;
     public javax.swing.JPanel panelAsientos;
+    public javax.swing.JPanel panelEstadosFinancierosExta;
     public javax.swing.JPanel panelGlobal;
     public javax.swing.JPanel panelMovimientos;
     public javax.swing.JPanel panelPeriodoContable;
-    public javax.swing.JPanel panelTabBalanceGeneral;
-    public javax.swing.JPanel panelTabEstadoDeResultado;
     public javax.swing.JTabbedPane panelTabGlobal;
     public javax.swing.JPanel panelTabLibroDiario;
     public javax.swing.JPanel panelTabLibroMayor;
@@ -712,12 +609,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JPanel panelTablaMovimientos;
     public javax.swing.JPanel panelTitulo;
     public javax.swing.JPanel panelTotales;
+    public javax.swing.JSeparator separadorAñoMesYEstadosFinancierosExtra;
     public javax.swing.JTable tbAsientosDeDiario;
     public javax.swing.JTable tbMovimientosCuentaEspecificaLibroMayor;
     public javax.swing.JTable tbMovimientosDeAsientosDeDiario;
     public javax.swing.JLabel txtAnioPeriodoContable;
     public javax.swing.JLabel txtCuentaLibroMayor;
+    public javax.swing.JLabel txtEstadoPeriodoContable;
     public javax.swing.JLabel txtMesPeriodoContable;
+    public javax.swing.JTextField txtSalidaEstadoPeriodoContable;
     public javax.swing.JLabel txtSaltoTotalCuentaLibroMayor;
     public javax.swing.JLabel txtTituloApp;
     public javax.swing.JLabel txtTotalDebeLibroMayor;

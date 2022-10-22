@@ -21,13 +21,10 @@ public class ControladorVistaPrincipal implements ActionListener {
     public ControladorVistaPrincipal(VistaPrincipal vp) {
         this.vp = vp;
         controladorRegEdAsientos = new ControladorVistaRegistroEdicionAsientosDeDiario(new VistaRegistroEdicionAsientosDeDiario(vp, true));
-        //this.vp.panelTabGlobal.setEnabledAt(2, false);
-        //this.vp.panelTabGlobal.setEnabledAt(3, false);
 
         // Add action listeners
-        this.vp.btnEditarMovimiento.addActionListener(this);
-
-        this.vp.btnRegistrarEditarNuevoAsientoDeDiario.addActionListener(this);
+        this.vp.btnRegistrarMovimiento.addActionListener(this);
+        this.vp.btnRegistrarNuenoAsiento.addActionListener(this);
 
         this.vp.munuItemVerCatalogoDeCuenta.addActionListener(this);
         this.vp.setExtendedState(VistaPrincipal.MAXIMIZED_BOTH);
@@ -48,7 +45,7 @@ public class ControladorVistaPrincipal implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vp.munuItemVerCatalogoDeCuenta) {
 
-        } else if (e.getSource() == vp.btnRegistrarEditarNuevoAsientoDeDiario) {
+        } else if (e.getSource() == vp.btnRegistrarNuenoAsiento) {
             controladorRegEdAsientos.mostrar();
         }
     }
