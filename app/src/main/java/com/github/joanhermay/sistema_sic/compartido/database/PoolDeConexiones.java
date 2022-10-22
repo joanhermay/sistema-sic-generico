@@ -26,9 +26,10 @@ public final class PoolDeConexiones {
 
     private static HikariConfig getConfig() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mariadb://localhost:3306/bd_sistema_sic");
-        config.setUsername("admin");
-        config.setPassword("admin");
+        config.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
+        config.setJdbcUrl("jdbc:derby:g01_winexpand_database/sistema_contable_winexpand;create=true");
+        config.setUsername("winexpand");
+        config.setPassword("winexpand");
         return config;
     }
 
