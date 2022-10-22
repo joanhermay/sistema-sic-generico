@@ -16,7 +16,6 @@ public class ControladorVistaEstadoDeResultado implements ActionListener {
 
     public ControladorVistaEstadoDeResultado(VistaEstadoDeResultado edr) {
         this.edr = edr;
-        edr.tablaCapitalPatrimonio.setModel(new TableModelCapitalPatrimonio());
     }
     
     public void mostrar() {
