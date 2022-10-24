@@ -12,12 +12,11 @@ import javax.swing.UIManager;
  * @author joanhermay
  */
 public class Principal {
-
     public static void main(String args[]) {
         prepararGuiConToquesVisuales();
         VistaPrincipal vp = new VistaPrincipal();
-        ControladorVistaPrincipal cvp = new ControladorVistaPrincipal(vp);
-        cvp.mostrar();
+        ControladorVistaPrincipal c = new ControladorVistaPrincipal(vp);
+        c.mostrar();
     }
 
     private static void prepararGuiConToquesVisuales() {

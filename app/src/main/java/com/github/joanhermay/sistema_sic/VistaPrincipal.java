@@ -4,39 +4,19 @@
  */
 package com.github.joanhermay.sistema_sic;
 
-import com.github.joanhermay.sistema_sic.catalogo.vistas.VistaCatalogoDeCuentas;
-import com.github.joanhermay.sistema_sic.librodiario.vistas.VistaRegistroEdicionAsientosDeDiario;
-import com.github.joanhermay.sistema_sic.librodiario.vistas.VistaRegistroEdicionMovimientos;
-import java.awt.event.ActionListener;
-
 /**
  *
  * @author joanhermay
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-    private VistaRegistroEdicionAsientosDeDiario registroEdicionAsientosDeDiario;
-    private VistaRegistroEdicionMovimientos registroEdicionMovimientos;
-    
-    
 
     /**
      * Creates new form Principal
      */
     public VistaPrincipal() {
         initComponents();
-        initCustomAppComponents();
     }
     
-    
-    private void initCustomAppComponents() {
-        registroEdicionAsientosDeDiario = new VistaRegistroEdicionAsientosDeDiario(this, true);
-        registroEdicionAsientosDeDiario.setLocationRelativeTo(this);
-        
-        registroEdicionMovimientos = new VistaRegistroEdicionMovimientos(this, true);
-        registroEdicionMovimientos.setLocationRelativeTo(this);
-        
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,9 +61,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ftxtSalidaTotalHaberAsiento = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         ftxtSaldoAsiento = new javax.swing.JFormattedTextField();
-        btnRegistrarMovimiento = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         panelTabLibroMayor = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMovimientosCuentaEspecificaLibroMayor = new javax.swing.JTable();
@@ -103,6 +80,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         munuItemCostoDeManoDeObra = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
 
         panelTitulo.setBackground(new java.awt.Color(204, 204, 204));
         panelTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -137,6 +115,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         txtMesPeriodoContable.setText("Mes");
 
         cbAnioPeriodoContable.setAlignmentX(0.0F);
+        cbAnioPeriodoContable.setEnabled(false);
+
+        cbMesPeriodoContable.setEnabled(false);
 
         txtEstadoPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         txtEstadoPeriodoContable.setText("ESTADO");
@@ -146,6 +127,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         txtSalidaEstadoPeriodoContable.setFocusable(false);
 
         btnCerrarPeriodoContable.setText("Cerrar Periodo");
+        btnCerrarPeriodoContable.setEnabled(false);
 
         separadorAñoMesYEstadosFinancierosExtra.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -166,9 +148,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
             panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPeriodoContableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelPeriodoContableLayout.createSequentialGroup()
-                        .addComponent(txtAnioPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAnioPeriodoContable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbAnioPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelPeriodoContableLayout.createSequentialGroup()
@@ -215,6 +197,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
+        panelTabGlobal.setEnabled(false);
+
         panelTabLibroDiario.setLayout(new java.awt.GridLayout(1, 2));
 
         panelTablaAsientos.setBorder(javax.swing.BorderFactory.createTitledBorder("Asientos Diario"));
@@ -244,6 +228,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         }
 
         btnRegistrarNuenoAsiento.setText("Registrar nuevo asiento");
+        btnRegistrarNuenoAsiento.setEnabled(false);
 
         btnEliminarAsiento.setText("Eliminar asiento");
         btnEliminarAsiento.setEnabled(false);
@@ -276,7 +261,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(btnEditarAsiento)
                     .addComponent(btnEliminarAsiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -360,15 +345,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnRegistrarMovimiento.setText("Registrar movimiento");
-        btnRegistrarMovimiento.setEnabled(false);
-
-        jButton1.setText("Editar movimiento");
-        jButton1.setEnabled(false);
-
-        jButton4.setText("Eliminar movimiento");
-        jButton4.setEnabled(false);
-
         javax.swing.GroupLayout panelTablaMovimientosLayout = new javax.swing.GroupLayout(panelTablaMovimientos);
         panelTablaMovimientos.setLayout(panelTablaMovimientosLayout);
         panelTablaMovimientosLayout.setHorizontalGroup(
@@ -377,25 +353,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaMovimientosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrarMovimiento)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelTablaMovimientosLayout.setVerticalGroup(
             panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaMovimientosLayout.createSequentialGroup()
-                .addGroup(panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarMovimiento)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -475,6 +440,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         txtCuentaLibroMayor.setText("Cuenta");
 
         cbCuentaAMostrarLibroMayor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCuentaAMostrarLibroMayor.setEnabled(false);
 
         javax.swing.GroupLayout panelTabLibroMayorLayout = new javax.swing.GroupLayout(panelTabLibroMayor);
         panelTabLibroMayor.setLayout(panelTabLibroMayorLayout);
@@ -499,7 +465,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtCuentaLibroMayor)
                     .addComponent(cbCuentaAMostrarLibroMayor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -568,7 +534,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JButton btnCerrarPeriodoContable;
     public javax.swing.JButton btnEditarAsiento;
     public javax.swing.JButton btnEliminarAsiento;
-    public javax.swing.JButton btnRegistrarMovimiento;
     public javax.swing.JButton btnRegistrarNuenoAsiento;
     public javax.swing.JButton btnVerBalanceGeneral;
     public javax.swing.JButton btnVerEstadoDeResultado;
@@ -581,8 +546,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JFormattedTextField ftxtSalidaTotalHaberAsiento;
     public javax.swing.JFormattedTextField ftxtTotalDebeLibroMayor;
     public javax.swing.JFormattedTextField ftxtTotalHaberLibroMayor;
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton4;
     public javax.swing.JLabel jLabel10;
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel9;

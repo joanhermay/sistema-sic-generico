@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package com.github.joanhermay.sistema_sic.catalogo.vistas;
+package com.github.joanhermay.sistema_sic.catalogo;
 
 /**
  *
@@ -18,8 +18,8 @@ public class VistaCatalogoDeCuentas extends javax.swing.JDialog {
     public VistaCatalogoDeCuentas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        for (int i = 0; i < this.jTree1.getRowCount(); i++) {
-            this.jTree1.expandRow(i);
+        for (int i = 0; i < this.treeCatalogoDeCuentas.getRowCount(); i++) {
+            this.treeCatalogoDeCuentas.expandRow(i);
         }
     }
 
@@ -33,14 +33,17 @@ public class VistaCatalogoDeCuentas extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        treeCatalogoDeCuentas = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Catalogo de cuentas");
         setResizable(false);
 
+        treeCatalogoDeCuentas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane1.setViewportView(jTree1);
+        treeCatalogoDeCuentas.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        treeCatalogoDeCuentas.setRootVisible(false);
+        jScrollPane1.setViewportView(treeCatalogoDeCuentas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +67,6 @@ public class VistaCatalogoDeCuentas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTree jTree1;
+    public javax.swing.JTree treeCatalogoDeCuentas;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,10 +6,13 @@
  * User Manual available at https://docs.gradle.org/7.5/userguide/building_java_projects.html
  */
 
+import org.jooq.meta.jaxb.Logging
+
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id("io.ktor.plugin") version "2.1.2"
+    id "nu.studer.jooq" version "8.0"
 }
 
 repositories {
@@ -24,6 +27,11 @@ dependencies {
     implementation 'com.formdev:flatlaf:2.6'
     implementation 'org.apache.derby:derby:10.16.1.1'
     implementation 'com.zaxxer:HikariCP:5.0.1'
+    
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.8'
+    jooqGenerator("org.mariadb.jdbc:mariadb-java-client:3.0.8")
+
+    implementation 'org.jooq:jooq:3.17.4'
 }
 
 application {
@@ -54,3 +62,39 @@ ktor {
         archiveFileName.set("app-full.jar")
     }
 }
+
+jooq {
+    configurations {
+        main {
+            generationTool {
+                logging = Logging.WARN
+                jdbc {
+                    driver = 'org.mariadb.jdbc.Driver'
+                    url = 'jdbc:mariadb://localhost:3306/sic'
+                    user = 'root'
+                    password = 'asd'
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    database {
+                        name = 'org.jooq.meta.mariadb.MariaDBDatabase'
+                        inputSchema = 'sic'
+                    }
+                    generate {
+                        deprecated = false
+                        records = true
+                        daos = true
+                        immutablePojos = true
+                        fluentSetters = true
+                    }
+                    target {
+                        packageName = 'com.github.joanhermay.sistema_sic.tablas_bd'
+                    }
+                    strategy.name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                }
+            }
+        }
+    }
+}
+
+tasks.named('generateJooq').configure { allInputsDeclared = true }
