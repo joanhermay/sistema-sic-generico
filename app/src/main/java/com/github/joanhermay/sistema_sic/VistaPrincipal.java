@@ -37,7 +37,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         txtEstadoPeriodoContable = new javax.swing.JLabel();
         txtSalidaEstadoPeriodoContable = new javax.swing.JTextField();
         btnCerrarPeriodoContable = new javax.swing.JButton();
-        separadorAñoMesYEstadosFinancierosExtra = new javax.swing.JSeparator();
+        separadorAnioMesYEstadosFinancierosExtra = new javax.swing.JSeparator();
         panelEstadosFinancierosExta = new javax.swing.JPanel();
         btnVerBalanceGeneral = new javax.swing.JButton();
         btnVerEstadoDeResultado = new javax.swing.JButton();
@@ -109,7 +109,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         panelPeriodoContable.setBorder(javax.swing.BorderFactory.createTitledBorder("Periodo Contable"));
 
         txtAnioPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtAnioPeriodoContable.setText("Año");
+        txtAnioPeriodoContable.setText("AÃ±o");
 
         txtMesPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtMesPeriodoContable.setText("Mes");
@@ -129,7 +129,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         btnCerrarPeriodoContable.setText("Cerrar Periodo");
         btnCerrarPeriodoContable.setEnabled(false);
 
-        separadorAñoMesYEstadosFinancierosExtra.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        separadorAnioMesYEstadosFinancierosExtra.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         panelEstadosFinancierosExta.setEnabled(false);
         panelEstadosFinancierosExta.setLayout(new java.awt.GridLayout(1, 2, 50, 100));
@@ -165,7 +165,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addComponent(txtSalidaEstadoPeriodoContable, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnCerrarPeriodoContable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorAñoMesYEstadosFinancierosExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separadorAnioMesYEstadosFinancierosExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEstadosFinancierosExta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -192,7 +192,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                                 .addContainerGap())))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPeriodoContableLayout.createSequentialGroup()
                         .addGroup(panelPeriodoContableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(separadorAñoMesYEstadosFinancierosExtra)
+                            .addComponent(separadorAnioMesYEstadosFinancierosExtra)
                             .addComponent(panelEstadosFinancierosExta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
@@ -208,7 +208,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nº Asiento", "Fecha", "Concepto"
+                "NÂº Asiento", "Fecha", "Concepto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -569,7 +569,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JPanel panelTablaMovimientos;
     public javax.swing.JPanel panelTitulo;
     public javax.swing.JPanel panelTotales;
-    public javax.swing.JSeparator separadorAñoMesYEstadosFinancierosExtra;
+    public javax.swing.JSeparator separadorAnioMesYEstadosFinancierosExtra;
     public javax.swing.JTable tbAsientosDeDiario;
     public javax.swing.JTable tbMovimientosCuentaEspecificaLibroMayor;
     public javax.swing.JTable tbMovimientosDeAsientosDeDiario;
