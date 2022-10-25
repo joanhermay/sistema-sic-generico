@@ -31,7 +31,7 @@ public final class Conexiones {
             JOptionPane.showMessageDialog(null, "Conectado a base de datos", "Inicializando", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos", "ERROR DE CONXION", JOptionPane.ERROR_MESSAGE);
-            JOptionPane.showMessageDialog(null, "Saliendo", "SALIR", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Procediendo a salir", "SALIR", JOptionPane.INFORMATION_MESSAGE);
             System.exit(512);
         }
         consulta = DSL.using(ds, SQLDialect.MARIADB);

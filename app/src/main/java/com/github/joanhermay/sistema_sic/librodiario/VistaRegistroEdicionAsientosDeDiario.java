@@ -39,26 +39,6 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
         txtConcepto = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtAreaConceptoPartida = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
-        txtConcepto1 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        txtAreaConceptoMovimientoOpcional = new javax.swing.JTextArea();
-        txtMonto = new javax.swing.JLabel();
-        ftxtMontoEntrada = new javax.swing.JFormattedTextField();
-        radioBDebe = new javax.swing.JRadioButton();
-        radioBHaber = new javax.swing.JRadioButton();
-        txtTipoMovimiento = new javax.swing.JLabel();
-        btnAgregarAVistaPrevia = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableMovVistaPrevia1 = new javax.swing.JTable();
-        btnEliminarMovVistaPrevia = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        cbCategoriaGeneral = new javax.swing.JComboBox<>();
-        cbRubroDeAgrupacion = new javax.swing.JComboBox<>();
-        cbCuentaNombreCodigo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -97,7 +77,7 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                                 .addComponent(cbFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(checkBOtraFecha)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 627, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -115,161 +95,6 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro de movimientos"));
-
-        txtConcepto1.setText("Concepto");
-
-        txtAreaConceptoMovimientoOpcional.setColumns(20);
-        txtAreaConceptoMovimientoOpcional.setRows(5);
-        jScrollPane5.setViewportView(txtAreaConceptoMovimientoOpcional);
-
-        txtMonto.setText("Monto");
-
-        ftxtMontoEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
-
-        grupoBtnDebeHaberParcial.add(radioBDebe);
-        radioBDebe.setText("DEBE");
-
-        grupoBtnDebeHaberParcial.add(radioBHaber);
-        radioBHaber.setText("HABER");
-
-        txtTipoMovimiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        txtTipoMovimiento.setText("Tipo de movimiento");
-
-        btnAgregarAVistaPrevia.setText("Agregar");
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Vista previa"));
-
-        tableMovVistaPrevia1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tableMovVistaPrevia1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tableMovVistaPrevia1);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btnEliminarMovVistaPrevia.setText("Eliminar");
-        btnEliminarMovVistaPrevia.setEnabled(false);
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Categoria General");
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Rubro de Agrupacion");
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Cuenta");
-
-        cbCategoriaGeneral.setEnabled(false);
-
-        cbRubroDeAgrupacion.setEnabled(false);
-
-        cbCuentaNombreCodigo.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtConcepto1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtTipoMovimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnEliminarMovVistaPrevia, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnAgregarAVistaPrevia))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(radioBDebe)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(radioBHaber)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbCategoriaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbRubroDeAgrupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbCuentaNombreCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(txtMonto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ftxtMontoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cbCategoriaGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbRubroDeAgrupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbCuentaNombreCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioBDebe)
-                    .addComponent(radioBHaber)
-                    .addComponent(txtTipoMovimiento))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtConcepto1)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtMontoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMonto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarAVistaPrevia)
-                    .addComponent(btnEliminarMovVistaPrevia))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -280,10 +105,9 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -291,9 +115,7 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
@@ -304,35 +126,15 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnAgregarAVistaPrevia;
     public javax.swing.JButton btnCancelar;
-    public javax.swing.JButton btnEliminarMovVistaPrevia;
     public javax.swing.JButton btnGuardar;
-    public javax.swing.JComboBox<String> cbCategoriaGeneral;
-    public javax.swing.JComboBox<String> cbCuentaNombreCodigo;
     public javax.swing.JComboBox<String> cbFecha;
-    public javax.swing.JComboBox<String> cbRubroDeAgrupacion;
     public javax.swing.JCheckBox checkBOtraFecha;
-    public javax.swing.JFormattedTextField ftxtMontoEntrada;
     public javax.swing.ButtonGroup grupoBtnDebeHaberParcial;
-    public javax.swing.JLabel jLabel1;
-    public javax.swing.JLabel jLabel2;
-    public javax.swing.JLabel jLabel3;
     public javax.swing.JPanel jPanel1;
-    public javax.swing.JPanel jPanel2;
-    public javax.swing.JPanel jPanel4;
-    public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane4;
-    public javax.swing.JScrollPane jScrollPane5;
-    public javax.swing.JRadioButton radioBDebe;
-    public javax.swing.JRadioButton radioBHaber;
-    public javax.swing.JTable tableMovVistaPrevia1;
-    public javax.swing.JTextArea txtAreaConceptoMovimientoOpcional;
     public javax.swing.JTextArea txtAreaConceptoPartida;
     public javax.swing.JLabel txtConcepto;
-    public javax.swing.JLabel txtConcepto1;
-    public javax.swing.JLabel txtMonto;
     public javax.swing.JLabel txtSalida;
-    public javax.swing.JLabel txtTipoMovimiento;
     // End of variables declaration//GEN-END:variables
 }

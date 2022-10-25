@@ -1,23 +1,21 @@
 package com.github.joanhermay.sistema_sic;
 
+import com.github.joanhermay.sistema_sic.librodiario.ControladorRegistroEdicionAsientosContables;
 import com.github.joanhermay.sistema_sic.librodiario.VistaRegistroEdicionAsientosDeDiario;
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.*;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.LibroDiario;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.AsientoContableRecord;
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.CuentaRecord;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.EstadoPeriodoContableRecord;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.PeriodoContableRecord;
-import org.jooq.Record;
+import org.jooq.Record1;
 import org.jooq.Record3;
 import org.jooq.Record4;
 import org.jooq.Result;
-import org.jooq.impl.QOM;
 
 import javax.swing.*;
-import java.awt.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import static com.github.joanhermay.sistema_sic.compartido.Conexiones.getConsulta;
@@ -25,6 +23,7 @@ import static com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.ClasificacionGeneral.CLASIFICACION_GENERAL;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.Cuenta.CUENTA;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.EstadoPeriodoContable.ESTADO_PERIODO_CONTABLE;
+import static com.github.joanhermay.sistema_sic.tablas_bd.tables.LibroDiario.LIBRO_DIARIO;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.MovimientosAsientoContable.MOVIMIENTOS_ASIENTO_CONTABLE;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.PeriodoContable.PERIODO_CONTABLE;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.RubroDeAgrupacion.RUBRO_DE_AGRUPACION;
@@ -151,9 +150,26 @@ public final class ControladorVistaPrincipal {
             armarTabLibroDiario();
         });
 
-        vista.menuItemCrearPeriodoContable.addActionListener(a ->{
-            VistaRegistroEdicionAsientosDeDiario v = new VistaRegistroEdicionAsientosDeDiario(vista,true);
+        vista.menuItemCrearPeriodoContable.addActionListener(a -> {
+            VistaRegistroEdicionAsientosDeDiario v = new VistaRegistroEdicionAsientosDeDiario(vista, true);
             v.setVisible(true);
+        });
+
+        vista.btnRegistrarNuenoAsiento.addActionListener(a -> {
+            int anio = Integer.parseInt((String) requireNonNull(vista.cbAnioPeriodoContable.getSelectedItem()));
+            int mes = vista.cbMesPeriodoContable.getSelectedIndex() + 1;
+            LocalDate date = LocalDate.of(anio, mes, 1);
+            Record1<Integer> idLD = getConsulta().select(LIBRO_DIARIO.ID_LIBRO_DIARIO).from(LIBRO_DIARIO).join(ASIENTO_CONTABLE).on(ASIENTO_CONTABLE.ID_LIBRO_DIARIO.eq(LIBRO_DIARIO.ID_LIBRO_DIARIO)).where(ASIENTO_CONTABLE.FECHA_DE_CREACION_PARTIDA.eq(date)).fetchAny();
+            if(idLD != null) {
+                Integer id = idLD.value1();
+                System.err.println(id);
+            }
+            System.err.println(date);
+
+
+
+            //ControladorRegistroEdicionAsientosContables c = new ControladorRegistroEdicionAsientosContables(new VistaRegistroEdicionAsientosDeDiario(vista, true),anio,mes);
+            //c.mostrar();
         });
     }
 
@@ -204,7 +220,6 @@ public final class ControladorVistaPrincipal {
             for (String mes : meses) {
                 vista.cbMesPeriodoContable.addItem(mes);
             }
-
             vista.cbAnioPeriodoContable.setEnabled(true);
             vista.cbMesPeriodoContable.setEnabled(true);
             vista.panelTabGlobal.setEnabled(true);
@@ -216,6 +231,7 @@ public final class ControladorVistaPrincipal {
             for (PeriodoContableRecord periodo : periodosContables) {
                 vista.cbAnioPeriodoContable.addItem(String.valueOf(periodo.getFechaInicioPeriodoContable().getYear()));
             }
+
             EstadoPeriodoContableRecord estado = getConsulta().selectFrom(ESTADO_PERIODO_CONTABLE)
                     .where(ESTADO_PERIODO_CONTABLE.ID_ESTADO_DEL_PERIODO_CONTABLE
                             .eq(periodoUltimoAnio.getIdEstadoDelPeriodoContable()))
