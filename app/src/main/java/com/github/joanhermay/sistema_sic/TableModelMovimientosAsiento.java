@@ -1,18 +1,16 @@
 package com.github.joanhermay.sistema_sic;
 
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.MovimientosAsientoContableRecord;
-
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableModelMovimientosAsientoEspecifico extends AbstractTableModel {
-    private List<JoanHermayMovimientosMesAsiento> movimientosMes = new ArrayList<>();
+public class TableModelMovimientosAsiento extends AbstractTableModel {
+    private List<MovimientoAsientoDiarioLocal> movimientosMes = new ArrayList<>();
 
     @Override
     public String getColumnName(int column) {
         return switch (column) {
-            case 0 -> "Codigo ddd";
+            case 0 -> "Codigo";
             case 1 -> "Cuenta";
             case 2 -> "Debe";
             case 3 -> "Haber";
@@ -32,7 +30,7 @@ public class TableModelMovimientosAsientoEspecifico extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        JoanHermayMovimientosMesAsiento mov = movimientosMes.get(rowIndex);
+        MovimientoAsientoDiarioLocal mov = movimientosMes.get(rowIndex);
         return switch (columnIndex) {
             case 0 -> mov.getCodigoCuenta();
             case 1 -> mov.getNombreCuenta();
@@ -42,7 +40,7 @@ public class TableModelMovimientosAsientoEspecifico extends AbstractTableModel {
         };
     }
 
-    public void agregarMovimiento(JoanHermayMovimientosMesAsiento movimiento) {
+    public void agregarMovimiento(MovimientoAsientoDiarioLocal movimiento) {
         movimientosMes.add(movimiento);
     }
 
@@ -50,7 +48,7 @@ public class TableModelMovimientosAsientoEspecifico extends AbstractTableModel {
         movimientosMes.clear();
     }
 
-    public void setNuevaLista(List<JoanHermayMovimientosMesAsiento> movimientosMesAsiento) {
+    public void setNuevaLista(List<MovimientoAsientoDiarioLocal> movimientosMesAsiento) {
         movimientosMes.clear();
         movimientosMes = movimientosMesAsiento;
     }

@@ -2,14 +2,14 @@ package com.github.joanhermay.sistema_sic;
 
 import java.math.BigDecimal;
 
-public class JoanHermayMovimientosMesAsiento {
+public class MovimientoAsientoDiarioLocal {
     private Integer id;
     private String codigoCuenta;
     private String nombreCuenta;
     private boolean esMovimientoDebe;
     private BigDecimal monto;
 
-    public JoanHermayMovimientosMesAsiento(Integer id, String codigoCuenta, String nombreCuenta, boolean esMovimientoDebe, BigDecimal monto) {
+    public MovimientoAsientoDiarioLocal(Integer id, String codigoCuenta, String nombreCuenta, boolean esMovimientoDebe, BigDecimal monto) {
         this.id = id;
         this.codigoCuenta = codigoCuenta;
         this.nombreCuenta = nombreCuenta;
@@ -17,7 +17,7 @@ public class JoanHermayMovimientosMesAsiento {
         this.monto = monto;
     }
 
-    public JoanHermayMovimientosMesAsiento() {
+    public MovimientoAsientoDiarioLocal() {
     }
 
     public Integer getId() {

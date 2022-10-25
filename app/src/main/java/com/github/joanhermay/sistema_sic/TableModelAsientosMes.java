@@ -1,13 +1,12 @@
 package com.github.joanhermay.sistema_sic;
 
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.AsientoContableRecord;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableModelAsientosDiarios extends AbstractTableModel {
+public class TableModelAsientosMes extends AbstractTableModel {
     private List<AsientoContableRecord> asientosMes = new ArrayList<>();
 
     @Override
@@ -34,6 +33,7 @@ public class TableModelAsientosDiarios extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         AsientoContableRecord asiento = asientosMes.get(rowIndex);
         return switch (columnIndex) {
+
             case 0 -> asiento.getIdAsientoContable();
             case 1 -> asiento.getFechaDeCreacionPartida();
             case 2 -> asiento.getConceptoAsientoContable();

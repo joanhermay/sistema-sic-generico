@@ -48,12 +48,11 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
         radioBDebe = new javax.swing.JRadioButton();
         radioBHaber = new javax.swing.JRadioButton();
         txtTipoMovimiento = new javax.swing.JLabel();
-        RemoverDeVistaPrevia = new javax.swing.JButton();
         btnAgregarAVistaPrevia = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableMovVistaPrevia1 = new javax.swing.JTable();
-        eliminarMovVistaPrevia = new javax.swing.JButton();
+        btnEliminarMovVistaPrevia = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -73,7 +72,7 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
 
         cbFecha.setEnabled(false);
 
-        checkBOtraFecha.setText("�Otra fecha?");
+        checkBOtraFecha.setText("Otra fecha?");
 
         txtConcepto.setText("Concepto");
 
@@ -137,9 +136,6 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
         txtTipoMovimiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         txtTipoMovimiento.setText("Tipo de movimiento");
 
-        RemoverDeVistaPrevia.setText("Remover");
-        RemoverDeVistaPrevia.setEnabled(false);
-
         btnAgregarAVistaPrevia.setText("Agregar");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Vista previa"));
@@ -174,8 +170,8 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        eliminarMovVistaPrevia.setText("Eliminar");
-        eliminarMovVistaPrevia.setEnabled(false);
+        btnEliminarMovVistaPrevia.setText("Eliminar");
+        btnEliminarMovVistaPrevia.setEnabled(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Categoria General");
@@ -212,9 +208,7 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(eliminarMovVistaPrevia, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(RemoverDeVistaPrevia)
+                                        .addComponent(btnEliminarMovVistaPrevia, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnAgregarAVistaPrevia))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -270,8 +264,7 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarAVistaPrevia)
-                    .addComponent(RemoverDeVistaPrevia)
-                    .addComponent(eliminarMovVistaPrevia))
+                    .addComponent(btnEliminarMovVistaPrevia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -286,8 +279,9 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -310,16 +304,15 @@ public class VistaRegistroEdicionAsientosDeDiario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton RemoverDeVistaPrevia;
     public javax.swing.JButton btnAgregarAVistaPrevia;
     public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnEliminarMovVistaPrevia;
     public javax.swing.JButton btnGuardar;
     public javax.swing.JComboBox<String> cbCategoriaGeneral;
     public javax.swing.JComboBox<String> cbCuentaNombreCodigo;
     public javax.swing.JComboBox<String> cbFecha;
     public javax.swing.JComboBox<String> cbRubroDeAgrupacion;
     public javax.swing.JCheckBox checkBOtraFecha;
-    public javax.swing.JButton eliminarMovVistaPrevia;
     public javax.swing.JFormattedTextField ftxtMontoEntrada;
     public javax.swing.ButtonGroup grupoBtnDebeHaberParcial;
     public javax.swing.JLabel jLabel1;

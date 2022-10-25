@@ -5,21 +5,27 @@
 package com.github.joanhermay.sistema_sic;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import javax.swing.UIManager;
+
+import javax.swing.*;
 
 /**
- *
  * @author joanhermay
  */
 public class Principal {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
+
         prepararGuiConToquesVisuales();
-        VistaPrincipal vp = new VistaPrincipal();
-        ControladorVistaPrincipal c = new ControladorVistaPrincipal(vp);
-        c.mostrar();
+        ControladorVistaPrincipal c = new ControladorVistaPrincipal(new VistaPrincipal());
+        try {
+            c.mostrar();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "=======\n\n" + e + "\n\n=======");
+            JOptionPane.showMessageDialog(null, "Saliendo...");
+        }
     }
 
     private static void prepararGuiConToquesVisuales() {
+
         FlatLightLaf.setup();
         UIManager.put("Button.arc", 999);
         UIManager.put("Component.arc", 999);

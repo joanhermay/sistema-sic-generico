@@ -109,7 +109,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         panelPeriodoContable.setBorder(javax.swing.BorderFactory.createTitledBorder("Periodo Contable"));
 
         txtAnioPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtAnioPeriodoContable.setText("Año");
+        txtAnioPeriodoContable.setText("Anio");
 
         txtMesPeriodoContable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtMesPeriodoContable.setText("Mes");
@@ -199,6 +199,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         panelTabGlobal.setEnabled(false);
 
+        panelTabLibroDiario.setEnabled(false);
         panelTabLibroDiario.setLayout(new java.awt.GridLayout(1, 2));
 
         panelTablaAsientos.setBorder(javax.swing.BorderFactory.createTitledBorder("Asientos Diario"));
@@ -208,24 +209,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nº Asiento", "Fecha", "Concepto"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         tbAsientosDeDiario.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbAsientosDeDiario);
-        if (tbAsientosDeDiario.getColumnModel().getColumnCount() > 0) {
-            tbAsientosDeDiario.getColumnModel().getColumn(0).setResizable(false);
-            tbAsientosDeDiario.getColumnModel().getColumn(1).setResizable(false);
-            tbAsientosDeDiario.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         btnRegistrarNuenoAsiento.setText("Registrar nuevo asiento");
         btnRegistrarNuenoAsiento.setEnabled(false);
@@ -243,7 +231,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(panelTablaAsientosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelTablaAsientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTablaAsientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnEliminarAsiento)
@@ -289,7 +277,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo Cuenta", "Nombre Cuenta", "Parcial", "Debe", "Haber"
+
             }
         ));
         jScrollPane3.setViewportView(tbMovimientosDeAsientosDeDiario);
@@ -352,7 +340,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             .addGroup(panelTablaMovimientosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -385,22 +373,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         panelTabGlobal.addTab("Libro Diario", panelTabLibroDiario);
 
+        panelTabLibroMayor.setEnabled(false);
+
         tbMovimientosCuentaEspecificaLibroMayor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Cuenta", "Fecha", "Debe", "Haber"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         tbMovimientosCuentaEspecificaLibroMayor.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbMovimientosCuentaEspecificaLibroMayor);
 
@@ -450,7 +432,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelTabLibroMayorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTotales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 1166, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 1154, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.CENTER, panelTabLibroMayorLayout.createSequentialGroup()
                         .addComponent(txtCuentaLibroMayor)
                         .addGap(40, 40, 40)
@@ -514,7 +496,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelGlobal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelGlobal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
