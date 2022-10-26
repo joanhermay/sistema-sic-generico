@@ -31,7 +31,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="txtAnio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField1" pref="177" max="32767" attributes="0"/>
+                      <Component id="jTextField1" pref="187" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="checkOtroAnio" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -78,7 +78,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="checkOtroAnio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xbf;Otro Anio?"/>
+        <Property name="text" type="java.lang.String" value="Otro Anio"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

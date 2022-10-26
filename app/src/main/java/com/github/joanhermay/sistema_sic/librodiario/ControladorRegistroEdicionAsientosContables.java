@@ -2,26 +2,24 @@ package com.github.joanhermay.sistema_sic.librodiario;
 
 import com.github.joanhermay.sistema_sic.compartido.Conexiones;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable;
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.Cuenta;
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.LibroDiario;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.AsientoContableRecord;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-import static com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable.ASIENTO_CONTABLE;
-import static com.github.joanhermay.sistema_sic.tablas_bd.tables.LibroDiario.LIBRO_DIARIO;
-
 public class ControladorRegistroEdicionAsientosContables {
+
     VistaRegistroEdicionAsientosDeDiario vista;
     int anio;
     int mes;
+    Integer idLibroDiario;
 
-    public ControladorRegistroEdicionAsientosContables(VistaRegistroEdicionAsientosDeDiario vista, int anio, int mes) {
+    public ControladorRegistroEdicionAsientosContables(VistaRegistroEdicionAsientosDeDiario vista, int anio, int mes, Integer idLibroDiario) {
         this.vista = vista;
         this.anio = anio;
         this.mes = mes;
+        this.idLibroDiario = idLibroDiario;
         init();
         armarAccionar();
     }
@@ -44,17 +42,18 @@ public class ControladorRegistroEdicionAsientosContables {
         });
 
         vista.btnGuardar.addActionListener(a -> {
-            AsientoContableRecord r = new AsientoContableRecord();
-            r.setConceptoAsientoContable(vista.txtAreaConceptoPartida.getText());
+            AsientoContableRecord asientoContableNuevo = Conexiones.getConsulta().newRecord(AsientoContable.ASIENTO_CONTABLE);
+
+            asientoContableNuevo.setConceptoAsientoContable(vista.txtAreaConceptoPartida.getText());
             LocalDate c = LocalDate.parse(Objects.requireNonNull(vista.cbFecha.getSelectedItem()).toString());
-            r.setFechaDeCreacionPartida(c);
 
-            //r.setIdLibroDiario();
+            asientoContableNuevo.setIdLibroDiario(idLibroDiario);
+            asientoContableNuevo.setConceptoAsientoContable(vista.txtAreaConceptoPartida.getText());
+            asientoContableNuevo.setFechaDeCreacionPartida(c);
+            asientoContableNuevo.store();
 
-
-            //ControladorRegistroEdicionMovimientoEspecifico c = new ControladorRegistroEdicionMovimientoEspecifico(new VistaRegistroEdicionMovimientoEspecifico(null, true), anio, mes);
-            //c.mostrar();
-
+            ControladorRegistroEdicionMovimientoEspecifico con = new ControladorRegistroEdicionMovimientoEspecifico(new VistaRegistroEdicionMovimientoEspecifico(null, true), asientoContableNuevo.getIdAsientoContable());
+            con.mostrar();
         });
     }
 
@@ -62,6 +61,5 @@ public class ControladorRegistroEdicionAsientosContables {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
-
 
 }

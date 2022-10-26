@@ -40,7 +40,7 @@ public class VistaNuevoPeriodoContable extends javax.swing.JDialog {
 
         txtAnio.setText("Anio");
 
-        checkOtroAnio.setText("¿??¿");
+        checkOtroAnio.setText("Otro Anio");
 
         btnCrear.setText("Crear");
 
@@ -57,7 +57,7 @@ public class VistaNuevoPeriodoContable extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtAnio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(checkOtroAnio))
                     .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

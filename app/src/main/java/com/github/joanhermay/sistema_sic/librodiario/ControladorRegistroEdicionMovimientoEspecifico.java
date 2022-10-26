@@ -3,17 +3,17 @@ package com.github.joanhermay.sistema_sic.librodiario;
 import java.util.List;
 
 import static com.github.joanhermay.sistema_sic.compartido.CatalogoDeCuentas.*;
+import java.time.LocalDate;
 
 public class ControladorRegistroEdicionMovimientoEspecifico {
 
     private VistaRegistroEdicionMovimientoEspecifico vista;
-    private int anio;
-    private int mes;
+    private LocalDate fecha;
+    private Integer idAsientoContable;
 
-    public ControladorRegistroEdicionMovimientoEspecifico(VistaRegistroEdicionMovimientoEspecifico vista, int anio, int mes) {
+    public ControladorRegistroEdicionMovimientoEspecifico(VistaRegistroEdicionMovimientoEspecifico vista, Integer idAsientoContable) {
         this.vista = vista;
-        this.anio = anio;
-        this.mes = mes;
+        this.idAsientoContable = idAsientoContable;
         init();
         armarAccionar();
     }
@@ -40,7 +40,6 @@ public class ControladorRegistroEdicionMovimientoEspecifico {
         }
 
         vista.cbRubroDeAgrupacion.setSelectedIndex(0);
-
 
         String nombreRubro = (String) vista.cbRubroDeAgrupacion.getSelectedItem();
         List<String> cuentas = getCuentasSegunRubro(nombreRubro);
@@ -85,7 +84,6 @@ public class ControladorRegistroEdicionMovimientoEspecifico {
         }
 
         vista.cbRubroDeAgrupacion.setSelectedIndex(0);
-
 
         String nombreRubro = (String) vista.cbRubroDeAgrupacion.getSelectedItem();
         List<String> cuentas = getCuentasSegunRubro(nombreRubro);

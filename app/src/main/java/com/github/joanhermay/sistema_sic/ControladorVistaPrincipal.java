@@ -1,9 +1,6 @@
 package com.github.joanhermay.sistema_sic;
 
-import com.github.joanhermay.sistema_sic.librodiario.ControladorRegistroEdicionAsientosContables;
-import com.github.joanhermay.sistema_sic.librodiario.VistaRegistroEdicionAsientosDeDiario;
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable;
-import com.github.joanhermay.sistema_sic.tablas_bd.tables.LibroDiario;
+import com.github.joanhermay.sistema_sic.compartido.Conexiones;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.AsientoContableRecord;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.EstadoPeriodoContableRecord;
 import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.PeriodoContableRecord;
@@ -19,6 +16,10 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.github.joanhermay.sistema_sic.compartido.Conexiones.getConsulta;
+import com.github.joanhermay.sistema_sic.librodiario.ControladorRegistroEdicionAsientosContables;
+import com.github.joanhermay.sistema_sic.librodiario.VistaRegistroEdicionAsientosDeDiario;
+import com.github.joanhermay.sistema_sic.periodocontable.ControladorVistaNuevoPeriodoContable;
+import com.github.joanhermay.sistema_sic.periodocontable.VistaNuevoPeriodoContable;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.AsientoContable.ASIENTO_CONTABLE;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.ClasificacionGeneral.CLASIFICACION_GENERAL;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.Cuenta.CUENTA;
@@ -37,7 +38,6 @@ public final class ControladorVistaPrincipal {
     TableModelMovimientosAsiento modeloMovimientosAsiento;
 
     TableModelMovimientosCuenta modeloMovimientosCuentaLM;
-
 
     static Result<Record3<Integer, String, String>> clasificacionesIdCodNombre;
     static Result<Record3<Integer, String, String>> rubrosEnClasificacionesIdCodNombre;
@@ -61,7 +61,6 @@ public final class ControladorVistaPrincipal {
         vista.setExtendedState(JFrame.MAXIMIZED_BOTH);
         vista.setVisible(true);
     }
-
 
     private void actualizarAsientos() {
         int anio = Integer.parseInt(requireNonNull(vista.cbAnioPeriodoContable.getSelectedItem()).toString());
@@ -95,7 +94,7 @@ public final class ControladorVistaPrincipal {
                     vista.btnVerEstadoDeResultado.setEnabled(false);
                     vista.btnVerBalanceGeneral.setEnabled(false);
                     vista.panelTabGlobal.setEnabledAt(1, false);
-                    armarTabLibroDiario();
+                    armarTabLibroMayor();
                 } else {
                     vista.panelTabGlobal.setEnabledAt(1, true);
                     vista.btnCerrarPeriodoContable.setEnabled(false);
@@ -113,15 +112,14 @@ public final class ControladorVistaPrincipal {
             }
         });
 
-
         vista.tbAsientosDeDiario.getSelectionModel().addListSelectionListener(ls -> {
             if (vista.tbAsientosDeDiario.getSelectedRow() != -1) {
                 int idAsiento = (int) modeloAsientosMensuales.getValueAt(vista.tbAsientosDeDiario.getSelectedRow(), 0);
 
                 Result<Record4<String, String, Integer, BigDecimal>> movimiento = getConsulta().select(CUENTA.CODIGO_CUENTA,
-                                CUENTA.NOMBRE_CUENTA,
-                                MOVIMIENTOS_ASIENTO_CONTABLE.ID_TIPO_DE_MOVIMIENTO,
-                                MOVIMIENTOS_ASIENTO_CONTABLE.MONTO_MOVIMIENTO_ASIENTO_CONTABLE).
+                        CUENTA.NOMBRE_CUENTA,
+                        MOVIMIENTOS_ASIENTO_CONTABLE.ID_TIPO_DE_MOVIMIENTO,
+                        MOVIMIENTOS_ASIENTO_CONTABLE.MONTO_MOVIMIENTO_ASIENTO_CONTABLE).
                         from(MOVIMIENTOS_ASIENTO_CONTABLE
                                 .join(CUENTA)
                                 .on(MOVIMIENTOS_ASIENTO_CONTABLE.ID_CUENTA
@@ -147,56 +145,61 @@ public final class ControladorVistaPrincipal {
         });
 
         vista.cbCuentaAMostrarLibroMayor.addActionListener(a -> {
-            armarTabLibroDiario();
+            armarTabLibroMayor();
         });
 
         vista.menuItemCrearPeriodoContable.addActionListener(a -> {
-            VistaRegistroEdicionAsientosDeDiario v = new VistaRegistroEdicionAsientosDeDiario(vista, true);
-            v.setVisible(true);
+            int countPeriodosACtual = Conexiones.getConsulta().fetchCount(PERIODO_CONTABLE);
+            ControladorVistaNuevoPeriodoContable c = new ControladorVistaNuevoPeriodoContable(new VistaNuevoPeriodoContable(vista, true));
+            c.mostrar();
+            int countPeriodosADespues = Conexiones.getConsulta().fetchCount(PERIODO_CONTABLE);
+            if (countPeriodosACtual != countPeriodosADespues) {
+                JOptionPane.showMessageDialog(vista, "Es necesario abrir de nuevo la aplicacion");
+                JOptionPane.showMessageDialog(vista, "Cerrando");
+                vista.dispose();
+            }
+
         });
 
         vista.btnRegistrarNuenoAsiento.addActionListener(a -> {
             int anio = Integer.parseInt((String) requireNonNull(vista.cbAnioPeriodoContable.getSelectedItem()));
             int mes = vista.cbMesPeriodoContable.getSelectedIndex() + 1;
             LocalDate date = LocalDate.of(anio, mes, 1);
-            Record1<Integer> idLD = getConsulta().select(LIBRO_DIARIO.ID_LIBRO_DIARIO).from(LIBRO_DIARIO).join(ASIENTO_CONTABLE).on(ASIENTO_CONTABLE.ID_LIBRO_DIARIO.eq(LIBRO_DIARIO.ID_LIBRO_DIARIO)).where(ASIENTO_CONTABLE.FECHA_DE_CREACION_PARTIDA.eq(date)).fetchAny();
-            if(idLD != null) {
-                Integer id = idLD.value1();
-                System.err.println(id);
-            }
+            Record1<Integer> idLD = getConsulta()
+                    .select(LIBRO_DIARIO.ID_LIBRO_DIARIO)
+                    .from(LIBRO_DIARIO).where(LIBRO_DIARIO.FECHA_INICIO_MES_LIBRO_DIARIO.eq(date)).fetchAny();
+            Integer idLibroDiario = idLD.value1();
+            System.err.println("ID LIBRO DIARIO A AGREGAR ASIENTO = " + idLibroDiario);
             System.err.println(date);
-
-
-
-            //ControladorRegistroEdicionAsientosContables c = new ControladorRegistroEdicionAsientosContables(new VistaRegistroEdicionAsientosDeDiario(vista, true),anio,mes);
-            //c.mostrar();
+            ControladorRegistroEdicionAsientosContables c = new ControladorRegistroEdicionAsientosContables(new VistaRegistroEdicionAsientosDeDiario(vista, true), anio, mes, idLibroDiario);
+            c.mostrar();
         });
     }
 
-    private void armarTabLibroDiario() {
-        int idAsiento = (int) modeloAsientosMensuales.getValueAt(vista.tbAsientosDeDiario.getSelectedRow(), 0);
-        modeloMovimientosCuentaLM.limpiarTodo();
-        vista.cbCuentaAMostrarLibroMayor.removeAllItems();
-        vista.txtTotalDebeLibroMayor.setText("");
-        vista.txtTotalHaberLibroMayor.setText("");
-        vista.txtSaltoTotalCuentaLibroMayor.setText("");
+    private void armarTabLibroMayor() {
+        if (vista.tbAsientosDeDiario.getSelectedRow() != -1) {
+            int idAsiento = (int) modeloAsientosMensuales.getValueAt(vista.tbAsientosDeDiario.getSelectedRow(), 0);
+            modeloMovimientosCuentaLM.limpiarTodo();
+            vista.cbCuentaAMostrarLibroMayor.removeAllItems();
+            vista.txtTotalDebeLibroMayor.setText("");
+            vista.txtTotalHaberLibroMayor.setText("");
+            vista.txtSaltoTotalCuentaLibroMayor.setText("");
 
-        int anio = Integer.parseInt(requireNonNull(vista.cbAnioPeriodoContable.getSelectedItem()).toString());
-        LocalDate fechaLlenado = LocalDate.of(anio, 1, 1);
+            int anio = Integer.parseInt(requireNonNull(vista.cbAnioPeriodoContable.getSelectedItem()).toString());
+            LocalDate fechaLlenado = LocalDate.of(anio, 1, 1);
 
-
-        Result<Record4<String, String, String, BigDecimal>> cuenta = getConsulta().select(
-                        CUENTA.NOMBRE_CUENTA,
-                        CUENTA.CODIGO_CUENTA,
-                        TIPO_DE_MOVIMIENTO.NOMBRE_TIPO_DE_MOVIMIENTO,
-                        MOVIMIENTOS_ASIENTO_CONTABLE.MONTO_MOVIMIENTO_ASIENTO_CONTABLE)
-                .from(MOVIMIENTOS_ASIENTO_CONTABLE)
-                .join(CUENTA).on(CUENTA.ID_CUENTA.eq(MOVIMIENTOS_ASIENTO_CONTABLE.ID_CUENTA))
-                .join(TIPO_DE_MOVIMIENTO).on(TIPO_DE_MOVIMIENTO.ID_TIPO_DE_MOVIMIENTO.eq(MOVIMIENTOS_ASIENTO_CONTABLE.ID_TIPO_DE_MOVIMIENTO))
-                .where(MOVIMIENTOS_ASIENTO_CONTABLE.ID_ASIENTO_CONTABLE.eq(1))
-                .and(TIPO_DE_MOVIMIENTO.ID_TIPO_DE_MOVIMIENTO.eq(1))
-                .and(MOVIMIENTOS_ASIENTO_CONTABLE.ID_CUENTA.eq(1)).fetch();
-
+            Result<Record4<String, String, String, BigDecimal>> cuenta = getConsulta().select(
+                    CUENTA.NOMBRE_CUENTA,
+                    CUENTA.CODIGO_CUENTA,
+                    TIPO_DE_MOVIMIENTO.NOMBRE_TIPO_DE_MOVIMIENTO,
+                    MOVIMIENTOS_ASIENTO_CONTABLE.MONTO_MOVIMIENTO_ASIENTO_CONTABLE)
+                    .from(MOVIMIENTOS_ASIENTO_CONTABLE)
+                    .join(CUENTA).on(CUENTA.ID_CUENTA.eq(MOVIMIENTOS_ASIENTO_CONTABLE.ID_CUENTA))
+                    .join(TIPO_DE_MOVIMIENTO).on(TIPO_DE_MOVIMIENTO.ID_TIPO_DE_MOVIMIENTO.eq(MOVIMIENTOS_ASIENTO_CONTABLE.ID_TIPO_DE_MOVIMIENTO))
+                    .where(MOVIMIENTOS_ASIENTO_CONTABLE.ID_ASIENTO_CONTABLE.eq(1))
+                    .and(TIPO_DE_MOVIMIENTO.ID_TIPO_DE_MOVIMIENTO.eq(1))
+                    .and(MOVIMIENTOS_ASIENTO_CONTABLE.ID_CUENTA.eq(1)).fetch();
+        }
 
     }
 
@@ -210,7 +213,6 @@ public final class ControladorVistaPrincipal {
         vista.tbAsientosDeDiario.setModel(modeloAsientosMensuales);
         vista.tbMovimientosDeAsientosDeDiario.setModel(modeloMovimientosAsiento);
         vista.tbMovimientosCuentaEspecificaLibroMayor.setModel(modeloMovimientosCuentaLM);
-
 
         if (getConsulta().fetchCount(PERIODO_CONTABLE) == 0) {
             Thread t = new Thread(() -> JOptionPane.showMessageDialog(vista, "No se encontraron periodos contables.\nCree uno nuevo para empezar a usar el programa:\nAcciones -> Crear periodo contable", "NO HAY PERIODOS CONTABLES", WARNING_MESSAGE));
