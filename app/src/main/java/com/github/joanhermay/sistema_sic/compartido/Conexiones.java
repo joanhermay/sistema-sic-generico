@@ -22,7 +22,7 @@ public final class Conexiones {
     static {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("org.mariadb.jdbc.Driver");
-        config.setJdbcUrl("jdbc:mariadb://localhost:3306/sic");
+        config.setJdbcUrl("jdbc:mariadb://localhost:3306/winexpand");
         config.setUsername("root");
         config.setPassword("asd");
         HikariDataSource ds = null;
