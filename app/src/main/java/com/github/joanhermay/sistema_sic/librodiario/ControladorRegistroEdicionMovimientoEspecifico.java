@@ -3,7 +3,17 @@ package com.github.joanhermay.sistema_sic.librodiario;
 import java.util.List;
 
 import static com.github.joanhermay.sistema_sic.compartido.CatalogoDeCuentas.*;
+import com.github.joanhermay.sistema_sic.compartido.Conexiones;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.ClasificacionGeneral;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.Cuenta;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.MovimientosAsientoContable;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.RubroDeAgrupacion;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.TipoDeMovimiento;
+import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.MovimientosAsientoContableRecord;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
+import org.jooq.Record1;
 
 public class ControladorRegistroEdicionMovimientoEspecifico {
 
@@ -67,6 +77,41 @@ public class ControladorRegistroEdicionMovimientoEspecifico {
                 actualizarCuentasRegunRubro();
             }
         });
+
+        vista.btnAgregarAVistaPrevia.addActionListener(a -> {
+            if (vista.txtMonto.getText().isBlank()) {
+                JOptionPane.showMessageDialog(vista, "Agrege un monto");
+                return;
+            }
+            if (!vista.radioBDebe.isSelected() && !vista.radioBHaber.isSelected()) {
+                JOptionPane.showMessageDialog(vista, "Sleccione un tipo de movimiento");
+                return;
+            }
+            MovimientosAsientoContableRecord m = Conexiones.getConsulta().newRecord(MovimientosAsientoContable.MOVIMIENTOS_ASIENTO_CONTABLE);
+            m.setIdAsientoContable(idAsientoContable);
+
+            Record1<Integer> idCuenta = Conexiones.getConsulta()
+                    .select(Cuenta.CUENTA.ID_CUENTA)
+                    .from(Cuenta.CUENTA)
+                    .join(RubroDeAgrupacion.RUBRO_DE_AGRUPACION)
+                    .on(Cuenta.CUENTA.ID_RUBRO_DE_AGRUPACION.eq(RubroDeAgrupacion.RUBRO_DE_AGRUPACION.ID_RUBRO_DE_AGRUPACION))
+                    .join(ClasificacionGeneral.CLASIFICACION_GENERAL)
+                    .on(RubroDeAgrupacion.RUBRO_DE_AGRUPACION.ID_CLASIFICACION_GENERAL.eq(ClasificacionGeneral.CLASIFICACION_GENERAL.ID_CLASIFICACION_GENERAL))
+                    .where(Cuenta.CUENTA.NOMBRE_CUENTA.eq("Caja")).fetchAny();
+            m.setIdCuenta(idCuenta.value1());
+
+            String seleccion = vista.radioBDebe.isSelected() ? "Debe" : "Haber";
+
+            Record1<Integer> idTipoMov = Conexiones.getConsulta().select(TipoDeMovimiento.TIPO_DE_MOVIMIENTO.ID_TIPO_DE_MOVIMIENTO)
+                    .from(TipoDeMovimiento.TIPO_DE_MOVIMIENTO)
+                    .where(TipoDeMovimiento.TIPO_DE_MOVIMIENTO.NOMBRE_TIPO_DE_MOVIMIENTO.eq(seleccion)).fetchAny();
+            m.setIdTipoDeMovimiento(idTipoMov.value1());
+
+            m.setMontoMovimientoAsientoContable(new BigDecimal(vista.textMonto.getText()));
+            m.store();
+            vista.dispose();
+
+        });
     }
 
     private void actualizarRubrosSegunClasificacion() {
@@ -111,6 +156,7 @@ public class ControladorRegistroEdicionMovimientoEspecifico {
     }
 
     public void mostrar() {
+
         vista.setVisible(true);
     }
 }

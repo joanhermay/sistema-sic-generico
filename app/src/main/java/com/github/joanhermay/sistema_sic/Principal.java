@@ -12,9 +12,10 @@ import javax.swing.*;
  * @author joanhermay
  */
 public class Principal {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         prepararGuiConToquesVisuales();
+        
         ControladorVistaPrincipal c = new ControladorVistaPrincipal(new VistaPrincipal());
         try {
             c.mostrar();

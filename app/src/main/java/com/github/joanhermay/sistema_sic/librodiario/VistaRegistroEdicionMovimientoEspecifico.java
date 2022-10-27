@@ -36,11 +36,11 @@ public class VistaRegistroEdicionMovimientoEspecifico extends javax.swing.JDialo
         jLabel3 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnAgregarAVistaPrevia = new javax.swing.JButton();
-        ftxtMontoEntrada = new javax.swing.JFormattedTextField();
         radioBHaber = new javax.swing.JRadioButton();
         radioBDebe = new javax.swing.JRadioButton();
         txtTipoMovimiento = new javax.swing.JLabel();
         txtMonto = new javax.swing.JLabel();
+        textMonto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,10 +57,10 @@ public class VistaRegistroEdicionMovimientoEspecifico extends javax.swing.JDialo
 
         btnAgregarAVistaPrevia.setText("Guardar");
 
-        ftxtMontoEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
-
+        grupoBtnDebeHaberParcial.add(radioBHaber);
         radioBHaber.setText("HABER");
 
+        grupoBtnDebeHaberParcial.add(radioBDebe);
         radioBDebe.setText("DEBE");
 
         txtTipoMovimiento.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -109,8 +109,9 @@ public class VistaRegistroEdicionMovimientoEspecifico extends javax.swing.JDialo
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(ftxtMontoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(textMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,8 +135,8 @@ public class VistaRegistroEdicionMovimientoEspecifico extends javax.swing.JDialo
                     .addComponent(radioBHaber))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtMontoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMonto))
+                    .addComponent(txtMonto)
+                    .addComponent(textMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -152,13 +153,13 @@ public class VistaRegistroEdicionMovimientoEspecifico extends javax.swing.JDialo
     public javax.swing.JComboBox<String> cbCategoriaGeneral;
     public javax.swing.JComboBox<String> cbCuentaNombreCodigo;
     public javax.swing.JComboBox<String> cbRubroDeAgrupacion;
-    public javax.swing.JFormattedTextField ftxtMontoEntrada;
-    private javax.swing.ButtonGroup grupoBtnDebeHaberParcial;
+    public javax.swing.ButtonGroup grupoBtnDebeHaberParcial;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
     public javax.swing.JRadioButton radioBDebe;
     public javax.swing.JRadioButton radioBHaber;
+    public javax.swing.JTextField textMonto;
     public javax.swing.JLabel txtMonto;
     public javax.swing.JLabel txtTipoMovimiento;
     // End of variables declaration//GEN-END:variables

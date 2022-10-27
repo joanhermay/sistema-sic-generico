@@ -54,13 +54,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         panelTablaMovimientos = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbMovimientosDeAsientosDeDiario = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        ftxtSalidaTotalDebeAsiento = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
-        ftxtSalidaTotalHaberAsiento = new javax.swing.JFormattedTextField();
-        jLabel10 = new javax.swing.JLabel();
-        ftxtSaldoAsiento = new javax.swing.JFormattedTextField();
         panelTabLibroMayor = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMovimientosCuentaEspecificaLibroMayor = new javax.swing.JTable();
@@ -282,75 +275,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbMovimientosDeAsientosDeDiario);
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Debe");
-
-        ftxtSalidaTotalDebeAsiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ftxtSalidaTotalDebeAsiento.setEnabled(false);
-
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Haber");
-
-        ftxtSalidaTotalHaberAsiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ftxtSalidaTotalHaberAsiento.setEnabled(false);
-
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Saldo");
-
-        ftxtSaldoAsiento.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ftxtSaldoAsiento.setEnabled(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(ftxtSalidaTotalDebeAsiento)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(16, 16, 16)
-                .addComponent(ftxtSalidaTotalHaberAsiento)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(ftxtSaldoAsiento)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(ftxtSalidaTotalDebeAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(ftxtSalidaTotalHaberAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(ftxtSaldoAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout panelTablaMovimientosLayout = new javax.swing.GroupLayout(panelTablaMovimientos);
         panelTablaMovimientos.setLayout(panelTablaMovimientosLayout);
         panelTablaMovimientosLayout.setHorizontalGroup(
             panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaMovimientosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelTablaMovimientosLayout.setVerticalGroup(
             panelTablaMovimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTablaMovimientosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -525,16 +463,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cbAnioPeriodoContable;
     public javax.swing.JComboBox<String> cbCuentaAMostrarLibroMayor;
     public javax.swing.JComboBox<String> cbMesPeriodoContable;
-    public javax.swing.JFormattedTextField ftxtSaldoAsiento;
     public javax.swing.JFormattedTextField ftxtSaldoTotalCuentaLibroMayor;
-    public javax.swing.JFormattedTextField ftxtSalidaTotalDebeAsiento;
-    public javax.swing.JFormattedTextField ftxtSalidaTotalHaberAsiento;
     public javax.swing.JFormattedTextField ftxtTotalDebeLibroMayor;
     public javax.swing.JFormattedTextField ftxtTotalHaberLibroMayor;
-    public javax.swing.JLabel jLabel10;
-    public javax.swing.JLabel jLabel4;
-    public javax.swing.JLabel jLabel9;
-    public javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane3;

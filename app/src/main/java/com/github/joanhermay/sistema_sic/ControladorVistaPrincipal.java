@@ -29,6 +29,7 @@ import static com.github.joanhermay.sistema_sic.tablas_bd.tables.MovimientosAsie
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.PeriodoContable.PERIODO_CONTABLE;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.RubroDeAgrupacion.RUBRO_DE_AGRUPACION;
 import static com.github.joanhermay.sistema_sic.tablas_bd.tables.TipoDeMovimiento.TIPO_DE_MOVIMIENTO;
+import java.awt.event.FocusListener;
 import static java.util.Objects.requireNonNull;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 
@@ -77,6 +78,8 @@ public final class ControladorVistaPrincipal {
     }
 
     public void armarAccionar() {
+        
+        
 
         vista.cbAnioPeriodoContable.addActionListener(a -> {
             if (vista.cbAnioPeriodoContable.getSelectedIndex() != -1) {
@@ -112,6 +115,7 @@ public final class ControladorVistaPrincipal {
             }
         });
 
+        
         vista.tbAsientosDeDiario.getSelectionModel().addListSelectionListener(ls -> {
             if (vista.tbAsientosDeDiario.getSelectedRow() != -1) {
                 int idAsiento = (int) modeloAsientosMensuales.getValueAt(vista.tbAsientosDeDiario.getSelectedRow(), 0);
@@ -140,6 +144,7 @@ public final class ControladorVistaPrincipal {
                     modeloMovimientosAsiento.agregarMovimiento(mm);
                 }
                 modeloMovimientosAsiento.fireTableDataChanged();
+                vista.btnEliminarAsiento.setEnabled(true);
             }
 
         });

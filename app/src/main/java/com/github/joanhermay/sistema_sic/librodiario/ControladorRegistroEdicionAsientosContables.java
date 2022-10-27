@@ -7,6 +7,7 @@ import com.github.joanhermay.sistema_sic.tablas_bd.tables.records.AsientoContabl
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import javax.swing.JOptionPane;
 
 public class ControladorRegistroEdicionAsientosContables {
 
@@ -51,9 +52,11 @@ public class ControladorRegistroEdicionAsientosContables {
             asientoContableNuevo.setConceptoAsientoContable(vista.txtAreaConceptoPartida.getText());
             asientoContableNuevo.setFechaDeCreacionPartida(c);
             asientoContableNuevo.store();
-
-            ControladorRegistroEdicionMovimientoEspecifico con = new ControladorRegistroEdicionMovimientoEspecifico(new VistaRegistroEdicionMovimientoEspecifico(null, true), asientoContableNuevo.getIdAsientoContable());
-            con.mostrar();
+            do {
+                ControladorRegistroEdicionMovimientoEspecifico con = new ControladorRegistroEdicionMovimientoEspecifico(new VistaRegistroEdicionMovimientoEspecifico(null, true), asientoContableNuevo.getIdAsientoContable());
+                con.mostrar();
+            } while (JOptionPane.showOptionDialog(null, "Agregar otro movimiento", "Agregar otro movimiento", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null) == JOptionPane.OK_OPTION);
+            vista.dispose();
         });
     }
 
