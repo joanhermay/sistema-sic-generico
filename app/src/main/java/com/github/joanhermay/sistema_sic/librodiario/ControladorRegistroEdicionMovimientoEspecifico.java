@@ -97,7 +97,7 @@ public class ControladorRegistroEdicionMovimientoEspecifico {
                     .on(Cuenta.CUENTA.ID_RUBRO_DE_AGRUPACION.eq(RubroDeAgrupacion.RUBRO_DE_AGRUPACION.ID_RUBRO_DE_AGRUPACION))
                     .join(ClasificacionGeneral.CLASIFICACION_GENERAL)
                     .on(RubroDeAgrupacion.RUBRO_DE_AGRUPACION.ID_CLASIFICACION_GENERAL.eq(ClasificacionGeneral.CLASIFICACION_GENERAL.ID_CLASIFICACION_GENERAL))
-                    .where(Cuenta.CUENTA.NOMBRE_CUENTA.eq("Caja")).fetchAny();
+                    .where(Cuenta.CUENTA.NOMBRE_CUENTA.eq((String) vista.cbCuentaNombreCodigo.getSelectedItem())).fetchAny();
             m.setIdCuenta(idCuenta.value1());
 
             String seleccion = vista.radioBDebe.isSelected() ? "Debe" : "Haber";
